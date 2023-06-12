@@ -4,9 +4,9 @@ import datetime
 import dotenv
 import os
 
+
 dotenv.load_dotenv()
 KEY = os.getenv("API_KEY")
-
 
 class Stock:
     """

@@ -8,9 +8,9 @@ import json
 import os
 import dotenv
 
+
 dotenv.load_dotenv()
 KEY = os.getenv("API_KEY")
-
 
 class Chart:
     """
