@@ -1,6 +1,11 @@
 import json
 import requests
 import datetime
+import dotenv
+import os
+
+dotenv.load_dotenv()
+KEY = os.getenv("API_KEY")
 
 
 class Stock:
@@ -44,7 +49,7 @@ class Stock:
         end_date = datetime.datetime.now().strftime("%Y-%m-%d")
         start_date = (datetime.datetime.strptime(end_date, "%Y-%m-%d") - datetime.timedelta(days=days)).strftime("%Y-%m-%d")
         try:
-            response = requests.get(f"https://api.polygon.io/v2/aggs/ticker/{self.symbol}/range/1/day/{start_date}/{end_date}?adjusted=true&sort=asc&limit=120&apiKey=yohjrjGDzw16Mt80pajyhHQBr4eAWOD2")
+            response = requests.get(f"https://api.polygon.io/v2/aggs/ticker/{self.symbol}/range/1/day/{start_date}/{end_date}?adjusted=true&sort=asc&limit=120&apiKey={KEY}")
             if response.status_code != 200:
                 return None
             data = response.json()

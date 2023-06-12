@@ -5,6 +5,11 @@ import matplotlib.dates as mdates
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import websocket
 import json
+import os
+import dotenv
+
+dotenv.load_dotenv()
+KEY = os.getenv("API_KEY")
 
 
 class Chart:
@@ -73,7 +78,7 @@ class Chart:
             price = data["p"]
             realtime_price_label.config(text=f"Real-time Price: {price}")
 
-        ws = websocket.WebSocketApp(f"wss://socket.polygon.io/stocks/trades/{self.symbol}/last?apiKey=yohjrjGDzw16Mt80pajyhHQBr4eAWOD2",
+        ws = websocket.WebSocketApp(f"wss://socket.polygon.io/stocks/trades/{self.symbol}/last?apiKey={KEY}",
                                     on_message=on_message)
         ws.run_forever()
 
