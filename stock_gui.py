@@ -1,9 +1,7 @@
 import threading
 import tkinter as tk
 from tkinter import messagebox
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
 from stock import Stock
 from chart import Chart
 
